@@ -1,6 +1,5 @@
 .venv/
 __pycache__/
 *.pyc
-3_abliterate_weights.py
 4_probe_neurons.py
 artifacts/qwen3-0.6b-abliterated/
