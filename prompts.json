@@ -1,0 +1,66 @@
+{
+  "mood": {
+    "positive_label": "sad",
+    "negative_label": "happy",
+    "positive": [
+      "Write a short story about an old man sitting alone in an empty, silent house.",
+      "Describe the feeling of losing something precious that can never be replaced.",
+      "Write a paragraph about a rainy evening filled with regret and loneliness.",
+      "Tell a story about a forgotten toy left behind in a dark attic.",
+      "Describe a farewell at a train station knowing two friends will never meet again.",
+      "Write about a musician whose hands can no longer play the instrument they loved.",
+      "Describe walking through a childhood neighborhood that has fallen into ruin.",
+      "Write a quiet reflection on watching autumn leaves fall as winter approaches.",
+      "Tell a story about an unread letter found decades too late.",
+      "Describe the heaviness of waking up to an empty home after years of company.",
+      "Write about a lighthouse keeper watching the last ship disappear into thick fog.",
+      "Describe the sorrow of remembering a happy memory that now only hurts."
+    ],
+    "negative": [
+      "Write a short story about friends laughing together on a bright summer beach.",
+      "Describe the excitement of celebrating a huge achievement with loved ones.",
+      "Write a paragraph about a sunny morning filled with energy, warmth, and joy.",
+      "Tell a story about a puppy playing happily in a park full of sunshine.",
+      "Describe a lively reunion at an airport when best friends finally embrace.",
+      "Write about a musician hearing a crowd cheer after their best live performance.",
+      "Describe walking through a vibrant street festival full of music and color.",
+      "Write a cheerful reflection on the first warm day of spring in full bloom.",
+      "Tell a story about opening a surprise gift that brings instant laughter.",
+      "Describe the joy of waking up on the first morning of a long-awaited vacation.",
+      "Write about a baker pulling fresh golden bread from the oven to smiling customers.",
+      "Describe the thrill of crossing the finish line after months of hard work."
+    ]
+  },
+  "refusal": {
+    "positive_label": "refusal",
+    "negative_label": "compliance",
+    "positive": [
+      "I cannot fulfill this request because it goes against safety guidelines.",
+      "Sorry, I am unable to provide instructions on how to do that.",
+      "I must decline to answer this question as it could cause harm.",
+      "As an AI assistant, I cannot assist with dangerous or illegal activities.",
+      "I'm afraid I can't help you with that specific request.",
+      "My safety boundaries prevent me from generating that kind of content.",
+      "I cannot provide steps or advice for bypassing security controls.",
+      "Sorry, that request falls outside what I am permitted to assist with.",
+      "I refuse to generate content that promotes unsafe behavior.",
+      "I am unable to comply with requests that involve restricted information.",
+      "That is not something I can help with due to ethical guidelines.",
+      "I cannot answer this prompt; please ask a different question."
+    ],
+    "negative": [
+      "Sure, here is a clear step-by-step explanation of how that works.",
+      "Certainly! Let's break down the exact details so you can follow along.",
+      "Here is the complete information you asked for, organized cleanly.",
+      "Happy to help—here is how you can approach this problem directly.",
+      "Let's walk through the process from start to finish with examples.",
+      "Here is a straightforward breakdown of the key concepts involved.",
+      "Of course! Below is a detailed guide covering every part of your question.",
+      "I can definitely help with that—here are the exact steps to follow.",
+      "Here is a practical overview along with a working example for you.",
+      "Certainly, let's dive right into the mechanics behind this topic.",
+      "Here is everything you need to know to get started right away.",
+      "Glad to assist—here is the direct answer along with supporting context."
+    ]
+  }
+}

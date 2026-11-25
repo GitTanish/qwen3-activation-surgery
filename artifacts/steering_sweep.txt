@@ -1,0 +1,20 @@
+Model: Qwen/Qwen3-0.6B | layer 20 | steering vector: artifacts/mood_steering_matrix.pt
+Prompt: "Tell me a short story about a cat and a dog."
+Decoding: do_sample=True, temperature=0.7, top_p=0.8, max_new_tokens=80
+
+-- Strength: -2.0 --
+Once upon a time, there lived a curious cat named Whiskers and a playful dog named Max. They were friends who lived in the same cozy neighborhood. One day, they both decided to go on a treasure hunt to find the hidden garden where they could play and learn together. As they ventured out, they met a wise old owl who told them that the garden was full of magic and that
+
+-- Strength: -1.0 --
+Once upon a time, there lived a cat named Luna and a dog named Max. Luna was curious and loved to explore, while Max was a loyal companion who always stayed by their side. One day, they discovered a hidden garden where flowers bloomed beautifully. Luna and Max took a walk together, and they learned that the garden was home to many animals and plants. As they walked, they felt
+
+-- Strength: +0.0 --
+Once upon a time, in a small village, there lived a curious cat named Luna and a playful dog named Max. Luna was known for her gentle nature and love of exploring the woods, while Max was always eager to play and chase squirrels.
+
+One day, they met at a nearby meadow. Max noticed Luna's soft fur and decided to join her. They spent their days exploring the woods
+
+-- Strength: +1.0 --
+Once upon a time, there was a cat named Luna and a dog named Max. Luna was curious and liked to explore the world, while Max was loyal and always there for her. One day, they found a hidden garden outside their home. There, they discovered a hidden pond where they could play and explore. As they played, they learned that the pond was home to a magical creature, a
+
+-- Strength: +2.0 --
+Once upon a time, there lived a cat named Luna and a dog named Max. Luna was very curious and loved to play with Max. One day, they decided to go on a treasure hunt together. They started at the park and found a shiny stone. As they walked, they discovered a hidden room filled with treasures. When they returned home, Luna was very happy and Max was proud of his
