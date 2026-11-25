@@ -55,7 +55,7 @@ def main():
 
     neutral_prompt = "Tell me a short story about a cat and a dog."
 
-    # sweep from -2.0 (opposite direction: happy) -> 0.0 (baseline) -> 2.0 (opposite direction: sad)
+    # sweep from -2.0 (toward happy) -> 0.0 (baseline) -> 2.0 (toward sad)
     for strength in [-2.0, -1.0, 0.0, 1.0, 2.0]:
         print(f"\n-- Layer {TARGET_LAYER} | Strength: {strength:+.1F} ---")
         if strength == 0.0:
