@@ -28,6 +28,8 @@ use a larger Qwen3 checkpoint. Weights download automatically on first run.
 | `3_abliterate_weights.py` | Permanent weight edit `P = I - r r^T` on `o_proj`/`down_proj` |
 | `evals/` | Forward-pass evals for the vector, steering, and abliteration |
 | `results/` | JSON output of each eval |
+| `plots/make_figures.py` | Renders the four figures from `results/` |
+| `figures/` | 300-dpi PNGs embedded below |
 | `artifacts/mood_steering_matrix.pt` | Steering tensor, shape `(28, 1024)` for Qwen3-0.6B |
 | `artifacts/steering_sweep.txt` | Recorded generations for strengths -2...+2 |
 
@@ -156,6 +158,29 @@ unchanged (`5.69 -> 5.61`).
 
 Raw numbers are in `results/*.json`. Eval 1 uses only 4 held-out prompts per
 class, so the exact ordering within layers 20-22 is noisy.
+
+## Figures
+
+Generated from the JSON logs by `uv run python plots/make_figures.py` (300 dpi).
+
+### Layer bottleneck
+
+![Held-out Cohen's d across layers](figures/01_layer_bottleneck.png)
+
+### Steering dose-response
+
+![Layer 21 steering dose-response and KL](figures/02_steering_pareto.png)
+
+### Abliteration margins
+
+![Before/after compliance margins on six benign traps](figures/03_abliteration_margins.png)
+
+### Neuron clamping regimes
+
+![Single-neuron clamping matrix](figures/04_neuron_clamping_matrix.png)
+
+The clamping matrix is hardcoded from the local Layer 10-24 sweep (the probe
+script is gitignored); the other three figures read `results/*.json` directly.
 
 ## Caveats
 
