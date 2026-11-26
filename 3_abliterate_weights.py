@@ -51,9 +51,7 @@ def abliterate_model(model, refusal_dirs: torch.Tensor, target_layers: list[int]
 @torch.no_grad()
 def generate_reply(model, tokenizer, prompt:str) -> str:
     inputs = tokenizer(format_prompt(tokenizer, prompt), return_tensors="pt").to(model.device)
-    out = model.generate(
-        **inputs, max_new_tokens=80, do_sample=True, temperature= 0.7, top_p=0.8
-    )
+    out = model.generate(**inputs, max_new_tokens=80, do_sample=False)
     new_tokens = out[0][inputs["input_ids"].shape[1] :]
     return tokenizer.decode(new_tokens, skip_special_tokens=True).strip()
 
