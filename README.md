@@ -1,5 +1,9 @@
 # Qwen3 Activation Surgery
 
+<div align="center">
+  <img src="figures/social_preview.png" alt="Qwen3 Activation Surgery — activation steering, abliteration, and deterministic evals on a 0.6B model" width="100%">
+</div>
+
 Neural networks are not opaque black boxes; they are physical systems governed by discoverable, linear geometry. When you scale down to a 0.6-billion-parameter model on a single CPU, you strip away the engineering complexity and expose the raw mechanics of how concepts form, steer, and break inside the residual stream.
 
 This repository is a minimal, reproducible empirical probe of **activation engineering and weight-space surgery** on `Qwen3-0.6B`. It progresses from isolating concept directions, to steering inference linearly, to permanently excising refusal subspaces from model weights—paired with a deterministic evaluation suite that documents both what works and where naive intuition fails.
@@ -183,3 +187,9 @@ Rendered at 300 DPI directly from `results/*.json` via `uv run python plots/make
 * **Sample Scope:** Eval 1 uses 4 held-out prompts per class (making the exact ordering inside Layers 20–22 noisy), and Eval 2 measures next-token log-probabilities on a single neutral prefix rather than multi-prompt generation statistics.
 * **Checkpoint Coupling:** The `[28, 1024]` tensor geometry is specific to `Qwen3-0.6B`.
 * **Runtime Notes:** Executed on CPU in `bfloat16`; load Part 1C with `device_map="cpu"` on constrained-RAM systems so Accelerate does not offload layers into uneditable `meta` tensors. (`torch_dtype=` deprecation warnings are benign; pass `dtype=` to silence.)
+
+---
+
+## License
+
+MIT — see [LICENSE](LICENSE).
