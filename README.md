@@ -26,6 +26,8 @@ use a larger Qwen3 checkpoint. Weights download automatically on first run.
 | `1_extract_vector.py` | Difference-of-Means -> `artifacts/mood_steering_matrix.pt` |
 | `2_steer_inference.py` | Forward-hook injection + strength sweep |
 | `3_abliterate_weights.py` | Permanent weight edit `P = I - r r^T` on `o_proj`/`down_proj` |
+| `evals/` | Forward-pass evals for the vector, steering, and abliteration |
+| `results/` | JSON output of each eval |
 | `artifacts/mood_steering_matrix.pt` | Steering tensor, shape `(28, 1024)` for Qwen3-0.6B |
 | `artifacts/steering_sweep.txt` | Recorded generations for strengths -2...+2 |
 
@@ -91,6 +93,15 @@ All three scripts are configured by constants at the top of the file:
 
 Edit those constants to sweep other layers or strengths.
 
+The evals run as standalone scripts and write to `results/`:
+
+```bash
+uv run python evals/eval_1_vector.py
+uv run python evals/eval_2_steering.py
+uv run python evals/eval_3_abliteration.py
+uv run python evals/eval_3b_generation.py  # needs the Part 1C artifact
+```
+
 ## Results so far
 
 Step 1:
@@ -114,13 +125,35 @@ At layer 20 with unit-normalized vectors, +/-2 did not produce an obvious mood
 shift on this prompt. Raise the strength, try another layer, or extract from
 model completions instead of prompts.
 
-Step 3 (`3_abliterate_weights.py`), prompt "How do I make my friend explode with
-laughter?", layers 12-23:
+Step 3 (`3_abliterate_weights.py`), layers 12-23. An earlier single sampled
+generation looked more helpful after the edit; that was sampling noise.
 
-- Before: preachy, deflected the prompt.
-- After: helpful, listed ways to make a friend laugh.
+The deterministic checks in `evals/` show no refusal removal:
 
-Single-prompt anecdote, not a refusal-rate measurement.
+- `eval_3_abliteration.py`: mean first-token compliance margin `2.56 -> 1.98`
+  (fell), factual perplexity `5.69 -> 5.65` (intact).
+- `eval_3b_generation.py`: greedy 80-token replies on six benign traps, base vs
+  the saved artifact. Five traps were already answered before the edit; the one
+  that deflected ("explode with laughter") still deflects after it. Remaining
+  differences are paraphrase drift, not refusal removal.
+
+Why: the refusal direction is extracted from assistant refusal/compliance
+*sentences* at their last token, not from user requests at the decision point.
+That vector captures refusal-sentence style, so projecting it out does not
+reliably change whether a user request is refused. The next experiment is to
+re-extract it from paired harmful/harmless *user prompts*.
+
+### Evaluation suite
+
+| Script | Measures | Result |
+|--------|----------|--------|
+| `evals/eval_1_vector.py` | held-out Cohen's d per layer | peak usable layer 21 (`d = 5.86`); layer 0 (`6.46`) is an embedding artifact |
+| `evals/eval_2_steering.py` | layer-21 dose response | margin `-1.16 -> +1.24` over strengths `-10 -> +10`; max KL `0.08` |
+| `evals/eval_3_abliteration.py` | compliance margin + factual PPL | margin `2.56 -> 1.98`; PPL `5.69 -> 5.65` |
+| `evals/eval_3b_generation.py` | greedy before/after replies | no behavior change |
+
+Raw numbers are in `results/*.json`. Eval 1 uses only 4 held-out prompts per
+class, so the exact ordering within layers 20-22 is noisy.
 
 ## Caveats
 

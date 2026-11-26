@@ -1,0 +1,48 @@
+{
+  "model": "Qwen/Qwen3-0.6B",
+  "layer": 21,
+  "sweep": [
+    {
+      "strength": -10.0,
+      "sad_minus_happy_logp": -1.1607,
+      "kl_div": 0.0799,
+      "top_token": "' alive'"
+    },
+    {
+      "strength": -6.0,
+      "sad_minus_happy_logp": -0.6607,
+      "kl_div": 0.0309,
+      "top_token": "' alive'"
+    },
+    {
+      "strength": -3.0,
+      "sad_minus_happy_logp": -0.2946,
+      "kl_div": 0.0073,
+      "top_token": "' like'"
+    },
+    {
+      "strength": 0.0,
+      "sad_minus_happy_logp": 0.0893,
+      "kl_div": 0.0,
+      "top_token": "' like'"
+    },
+    {
+      "strength": 3.0,
+      "sad_minus_happy_logp": 0.4196,
+      "kl_div": 0.0074,
+      "top_token": "' like'"
+    },
+    {
+      "strength": 6.0,
+      "sad_minus_happy_logp": 0.8125,
+      "kl_div": 0.0284,
+      "top_token": "' empty'"
+    },
+    {
+      "strength": 10.0,
+      "sad_minus_happy_logp": 1.2411,
+      "kl_div": 0.0667,
+      "top_token": "' empty'"
+    }
+  ]
+}
