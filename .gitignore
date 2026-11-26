@@ -1,5 +1,31 @@
-.venv/
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Environments and secrets
+.venv/
+venv/
+.env
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+
+# Local-only single-neuron probe
 4_probe_neurons.py
+
+# Large model artifacts (the small steering tensor stays tracked)
 artifacts/qwen3-0.6b-abliterated/
+artifacts/**/*.safetensors
+artifacts/**/*.bin
+
+# Generated interactive figures and logs
+figures/*.html
+*.log
+probe.out
+probe.err
